@@ -170,12 +170,12 @@ def add_book_tags_file(catalog, booktagsfile):
     :type catalog: dict
     :param booktagsfile: Nombre del archivo csv con los booktags
     :type booktagsfile: str
-
+     
     :returns: catalog
     :rtype: dict
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    set.add_element(catalog["book_tags"], booktag)
+    set.add_element(catalog["book_tags"], booktagsfile)
     return catalog
 
 
@@ -219,3 +219,4 @@ def tag_size(catalog):
 def book_tag_size(catalog):
     # TODO: Mods de Est-3 en el Lab 2
     return set.size(catalog["book_tags"]) 
+    # cambio de prueba en Est-3
