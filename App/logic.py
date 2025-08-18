@@ -125,7 +125,7 @@ def load_books_tags(catalog, filename):
     de tags. Siga el mismo procedimiento que en la carga de libros.
 
     :param catalog: Catalogo de la aplicación
-    :type catalog: dict
+    :type catalog: dictmer
     :param filename: Nombre del archivo csv con los tags de los libros
     :type filename: str
 

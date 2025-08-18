@@ -25,7 +25,7 @@
  * Andres Rodriguez - Última version
  """
 
-import sys
+import logic as sys
 import App.logic as logic
 
 
@@ -48,17 +48,41 @@ def new_logic():
     return control
 
 
-def print_menu():
+def print_menu(catalog):
     """
     Imprime el menú de opciones en consola para el usuario
+    La opción uno sed refiere a la carga de cada uno de los libros.
+    La opción dos se refuere a la carga de todas las tags posibles que puede tener un libro,
+    La opción tres se refiere a la carga de las tags de los libros.
     """
-    print("Opciones:")
+    print("Opciones: ")
     print("1- Cargar Libros")
     print("2- Cargar Tags")
+    print("3 - cargar Tags de los Libros.")
+    print("0- Salir")
+    
+    opcion = input(str("Ingrese la opción con la que desea continuar: "))
+    if opcion == 1:
+        ejecutar = sys.load_books
+    
+    elif opcion == 2:
+        ejecutar = sys.load_tags
+        
+    if opcion == 3:
+        ejecutar = sys.load_books_tags
+    
+    elif opcion == 0:
+        ejecutar = "Salió del menú"
+        
+    else:
+        ejecutar = "El número que ingresó no se encuentra dentro del menú"
+        
+    return ejecutar
+    
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     # Agregue la opción 3 para cargar los tags de los libros.
     # Pueede guiarse de las opciones 1 y 2.
-    print("0- Salir")
+    
 
 
 def load_books(app):
@@ -112,7 +136,9 @@ def last_book(app):
     """
     Devuelve el último libro cargado en el conjunto de libros
     """
-    pass
+    
+    last = logic.last_book(app)
+    return last
 
 
 # Se crea el controlador asociado a la vista
