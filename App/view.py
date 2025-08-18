@@ -25,8 +25,10 @@
  * Andres Rodriguez - Última version
  """
 
-import logic as sys
-import App.logic as logic
+import logic 
+import App.logic
+import csv 
+import os
 
 
 """
@@ -63,13 +65,13 @@ def print_menu(catalog):
     
     opcion = input(str("Ingrese la opción con la que desea continuar: "))
     if opcion == 1:
-        ejecutar = sys.load_books
+        ejecutar = logic.load_books
     
     elif opcion == 2:
-        ejecutar = sys.load_tags
+        ejecutar = logic.load_tags
         
     if opcion == 3:
-        ejecutar = sys.load_books_tags
+        ejecutar = logic.load_books_tags
     
     elif opcion == 0:
         ejecutar = "Salió del menú"
@@ -93,8 +95,7 @@ def load_books(app):
     :param app: Aplicación de la lógica
     :type app: logic
     """
-    books = logic.load_books(app,
-                             "GoodReads/books-small.csv")
+    books = logic.load_books(app,"GoodReads/books-small.csv")
     return books
 
 
@@ -111,16 +112,15 @@ def load_tags(app):
     return tags
 
 
-def load_books_tags(app):
+def add_book_tags_file(catalog, booktagsfile):
     """
-    Carga los tags de los libros desde el archivo book_tags-small.csv y los almacena en la aplicación
-
-    :param app: Aplicación de la lógica
-    :type app: logic
+    Esta función guardar los booktags provenientes del archivo CSV.
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
-
+    bt = set.load_set(set.new_set(), booktagsfile)
+    catalog["book_tags"] = bt
+    return catalog
+    
 
 def first_book(app):
     """
@@ -131,13 +131,12 @@ def first_book(app):
 
 
 def last_book(app):
-    # TODO: Mods de Est-1 y Est-2, Est-3 en el Lab 2
+    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     """
-    Devuelve el último libro cargado en el conjunto de libros
+    Devuelve el último libro cargado
     """
-    
-    last = logic.last_book(app)
-    return last
+    last = last_book(app)
+    print("Último libro cargado:\n" + str(last) + "\n")
 
 
 # Se crea el controlador asociado a la vista
@@ -183,4 +182,4 @@ def main():
 
         else:
             print("Opcion erronea, vuelva a elegir.\n")
-    sys.exit(0)
+    logic.exit(0)

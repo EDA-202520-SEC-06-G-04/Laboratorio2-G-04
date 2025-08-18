@@ -26,7 +26,7 @@
  * Andres Rodriguez - Última version
  """
 
-import csv
+import csv 
 import os
 
 # Importar el modulo de la estructura de datos set
@@ -132,9 +132,12 @@ def load_books_tags(catalog, filename):
     :returns: Tamaño del conjunto de tags de los libros
     :rtype: int
     """
+    book_tags = catalog["book_tags"]
+    tags_file = os.path.join(data_dir, filename)
+    catalog["book_tags"] = set.load_set(book_tags, tags_file)
+    return len(catalog["book_tags"])
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
-
+    
 
 def first_book(catalog):
     """
