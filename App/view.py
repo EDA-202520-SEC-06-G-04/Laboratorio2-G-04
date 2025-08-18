@@ -82,7 +82,7 @@ def print_menu(catalog):
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     # Agregue la opción 3 para cargar los tags de los libros.
     # Pueede guiarse de las opciones 1 y 2.
-    
+
 
 
 def load_books(app):
