@@ -113,7 +113,6 @@ def load_tags(app):
 
 def load_books_tags(app):
     """
-    Función que carga los tags de los libros en la aplicación.
     Carga los tags de los libros desde el archivo book_tags-small.csv y los almacena en la aplicación
 
     :param app: Aplicación de la lógica
