@@ -48,7 +48,7 @@ def new_logic():
     return control
 
 
-def print_menu():
+def print_menu(catalog):
     """
     Imprime el menú de opciones en consola para el usuario
     """
@@ -61,7 +61,7 @@ def print_menu():
     print("0- Salir")
 
 
-def load_books(app):
+def load_books(catalog):
     """
     Función que carga los libros en la aplicación. 
     Carga los libros desde el archivo books-small.csv y los almacena en la aplicación
@@ -69,8 +69,7 @@ def load_books(app):
     :param app: Aplicación de la lógica
     :type app: logic
     """
-    books = logic.load_books(app,
-                             "GoodReads/books-small.csv")
+    books = logic.load_books(app,"GoodReads/books-small.csv")
     return books
 
 

@@ -91,10 +91,12 @@ def load_books(catalog, filename):
     :returns: Tamaño del conjunto de libros
     :rtype: int
     """
-    books = catalog["books"]
-    books_file = os.path.join(data_dir, filename)
-    catalog["books"] = set.load_set(books, books_file)
-    return book_size(catalog)
+    tf = os.path.join(data_dir, filename)
+    input_file = csv.DictReader(open(tf, encoding="utf-8"))
+    catalog["model"] = create_book_tag_list(catalog["model"])
+    for booktag in input_file:
+        add_book_tag(catalog, booktag)
+    return book_tag_size(catalog)
 
 
 def load_tags(catalog, filename):
@@ -149,7 +151,8 @@ def last_book(catalog):
     Devuelve el ultimo libro del catalogo
     """
     # TODO: Mods Est-3 en el Lab 2
-    pass
+    last = last_book(app)
+    print("Último libro cargado:\n" + str(last) + "\n")
 
 # Funciones para la manipulacion de los datos
 
@@ -167,7 +170,9 @@ def add_book_tags_file(catalog, booktagsfile):
     :rtype: dict
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
+    bt = set.load_set(set.new_set(), booktagsfile)
+    catalog["book_tags"] = bt
+    return catalog
 
 
 def create_book_tag_list(catalog):
