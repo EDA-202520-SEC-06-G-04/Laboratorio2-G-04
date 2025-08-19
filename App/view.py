@@ -64,7 +64,8 @@ def print_menu(catalog):
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     # Agregue la opción 3 para cargar los tags de los libros.
     # Pueede guiarse de las opciones 1 y 2.
-
+    print("3 - Cargar Tags de libros")
+    print("0- Salir")
 
 
 def load_books(app):
@@ -97,18 +98,20 @@ def add_book_tags_file(catalog, booktagsfile):
     Esta función guardar los booktags provenientes del archivo CSV.
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    bt = set.load_set(set.new_set(), booktagsfile)
-    catalog["book_tags"] = bt
-    return catalog
     
+    book_tags = logic.load_books_tags(app, "GoodReads/book_tags-small.csv")
+    return book_tags
+
+
 
 def first_book(app):
     """
     Devuelve el primer libro cargado en el conjunto de libros
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
-
+    
+    first = first_book(app)
+    return first
 
 def last_book(app):
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
@@ -142,7 +145,9 @@ def main():
             print("Total de libros cargados: " + str(books) + "\n")
 
             # TODO: Mods de Est-1 en el Lab 2
-            first = None
+            first = first_book(app)
+            print("Primer libro cargado:\n" + str(first) + "\n")
+
 
             # TODO: Mods de Est-2 en el Lab 2
             last = None
