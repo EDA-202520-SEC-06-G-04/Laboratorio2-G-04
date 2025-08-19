@@ -91,10 +91,7 @@ def load_books(catalog, filename):
     :returns: Tamaño del conjunto de libros
     :rtype: int
     """
-    books = catalog["books"]
-    books_file = os.path.join(data_dir, filename)
-    catalog["books"] = set.load_set(books, books_file)
-    return book_size(catalog)
+    pass
 
 
 def load_tags(catalog, filename):
@@ -149,7 +146,8 @@ def last_book(catalog):
     Devuelve el ultimo libro del catalogo
     """
     # TODO: Mods Est-3 en el Lab 2
-    pass
+    last = last_book(catalog)
+    print("Último libro cargado:\n" + str(last) + "\n")
 
 # Funciones para la manipulacion de los datos
 

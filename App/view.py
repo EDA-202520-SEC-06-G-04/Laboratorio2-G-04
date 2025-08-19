@@ -25,8 +25,8 @@
  * Andres Rodriguez - Última version
  """
 
-import sys
-import App.logic as logic
+import logic 
+import App.logic
 
 
 """
@@ -49,17 +49,23 @@ def new_logic():
     return control
 
 
-def print_menu():
+def print_menu(catalog):
     """
     Imprime el menú de opciones en consola para el usuario
+    La opción uno sed refiere a la carga de cada uno de los libros.
+    La opción dos se refuere a la carga de todas las tags posibles que puede tener un libro,
+    La opción tres se refiere a la carga de las tags de los libros.
     """
-    print("Opciones:")
+    print("Opciones: ")
     print("1- Cargar Libros")
     print("2- Cargar Tags")
+    print("3 - cargar Tags de los Libros.")
+    print("0- Salir")
+        
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     # Agregue la opción 3 para cargar los tags de los libros.
     # Pueede guiarse de las opciones 1 y 2.
-    print("0- Salir")
+
 
 
 def load_books(app):
@@ -70,8 +76,7 @@ def load_books(app):
     :param app: Aplicación de la lógica
     :type app: logic
     """
-    books = logic.load_books(app,
-                             "GoodReads/books-small.csv")
+    books = logic.load_books(app,"GoodReads/books-small.csv")
     return books
 
 
@@ -88,17 +93,15 @@ def load_tags(app):
     return tags
 
 
-def load_books_tags(app):
+def add_book_tags_file(catalog, booktagsfile):
     """
-    Función que carga los tags de los libros en la aplicación.
-    Carga los tags de los libros desde el archivo book_tags-small.csv y los almacena en la aplicación
-
-    :param app: Aplicación de la lógica
-    :type app: logic
+    Esta función guardar los booktags provenientes del archivo CSV.
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
-
+    bt = set.load_set(set.new_set(), booktagsfile)
+    catalog["book_tags"] = bt
+    return catalog
+    
 
 def first_book(app):
     """
@@ -109,11 +112,12 @@ def first_book(app):
 
 
 def last_book(app):
-    # TODO: Mods de Est-1 y Est-2, Est-3 en el Lab 2
+    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     """
-    Devuelve el último libro cargado en el conjunto de libros
+    Devuelve el último libro cargado
     """
-    pass
+    last = last_book(app)
+    print("Último libro cargado:\n" + str(last) + "\n")
 
 
 # Se crea el controlador asociado a la vista
@@ -159,4 +163,4 @@ def main():
 
         else:
             print("Opcion erronea, vuelva a elegir.\n")
-    sys.exit(0)
+    logic.exit(0)
