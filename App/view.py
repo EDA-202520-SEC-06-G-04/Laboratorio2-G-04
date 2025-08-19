@@ -45,6 +45,7 @@ def new_logic():
     :rtype: logic
     """
     control = logic.new_logic()
+    print("a")
     return control
 
 
