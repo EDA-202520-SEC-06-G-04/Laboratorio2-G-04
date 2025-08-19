@@ -27,8 +27,6 @@
 
 import logic 
 import App.logic
-import csv 
-import os
 
 
 """
@@ -62,25 +60,7 @@ def print_menu(catalog):
     print("2- Cargar Tags")
     print("3 - cargar Tags de los Libros.")
     print("0- Salir")
-    
-    opcion = input(str("Ingrese la opción con la que desea continuar: "))
-    if opcion == 1:
-        ejecutar = logic.load_books
-    
-    elif opcion == 2:
-        ejecutar = logic.load_tags
         
-    if opcion == 3:
-        ejecutar = logic.load_books_tags
-    
-    elif opcion == 0:
-        ejecutar = "Salió del menú"
-        
-    else:
-        ejecutar = "El número que ingresó no se encuentra dentro del menú"
-        
-    return ejecutar
-    
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     # Agregue la opción 3 para cargar los tags de los libros.
     # Pueede guiarse de las opciones 1 y 2.
