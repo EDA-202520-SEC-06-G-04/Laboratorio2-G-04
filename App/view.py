@@ -25,8 +25,8 @@
  * Andres Rodriguez - Última version
  """
 
-import logic 
-import App.logic
+import sys
+import App.logic as logic
 
 
 """
@@ -48,23 +48,16 @@ def new_logic():
     return control
 
 
-def print_menu(catalog):
+def print_menu():
     """
     Imprime el menú de opciones en consola para el usuario
-    La opción uno sed refiere a la carga de cada uno de los libros.
-    La opción dos se refuere a la carga de todas las tags posibles que puede tener un libro,
-    La opción tres se refiere a la carga de las tags de los libros.
     """
-    print("Opciones: ")
+    print("Opciones:")
     print("1- Cargar Libros")
     print("2- Cargar Tags")
-    print("3 - cargar Tags de los Libros.")
-    print("0- Salir")
-        
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     # Agregue la opción 3 para cargar los tags de los libros.
-    # Pueede guiarse de las opciones 1 y 2.
-    print("3 - Cargar Tags de libros")
+    print("3- Cargar Book-Tags!!!...")
     print("0- Salir")
 
 
@@ -76,7 +69,8 @@ def load_books(app):
     :param app: Aplicación de la lógica
     :type app: logic
     """
-    books = logic.load_books(app,"GoodReads/books-small.csv")
+    books = logic.load_books(app,
+                             "GoodReads/books-small.csv")
     return books
 
 
@@ -93,15 +87,16 @@ def load_tags(app):
     return tags
 
 
-def add_book_tags_file(catalog, booktagsfile):
+def load_books_tags(app):
     """
-    Esta función guardar los booktags provenientes del archivo CSV.
+    Función que carga los tags de los libros en la aplicación.
+    Carga los tags de los libros desde el archivo book_tags-small.csv y los almacena en la aplicación
+
+    :param app: Aplicación de la lógica
+    :type app: logic
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    
-    book_tags = logic.load_books_tags(app, "GoodReads/book_tags-small.csv")
-    return book_tags
-
+    pass
 
 
 def first_book(app):
@@ -109,17 +104,15 @@ def first_book(app):
     Devuelve el primer libro cargado en el conjunto de libros
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    
-    first = first_book(app)
-    return first
+    pass
+
 
 def last_book(app):
-    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
+    # TODO: Mods de Est-1 y Est-2, Est-3 en el Lab 2
     """
-    Devuelve el último libro cargado
+    Devuelve el último libro cargado en el conjunto de libros
     """
-    last = last_book(app)
-    print("Último libro cargado:\n" + str(last) + "\n")
+    pass
 
 
 # Se crea el controlador asociado a la vista
@@ -145,9 +138,7 @@ def main():
             print("Total de libros cargados: " + str(books) + "\n")
 
             # TODO: Mods de Est-1 en el Lab 2
-            first = first_book(app)
-            print("Primer libro cargado:\n" + str(first) + "\n")
-
+            first = None
 
             # TODO: Mods de Est-2 en el Lab 2
             last = None
@@ -158,8 +149,11 @@ def main():
             print("Total de tags cargados: " + str(tags) + "\n")
 
         elif int(inputs[0]) == 3:
-            # TODO: Mods de Est-3 en el Lab 2
-            pass
+             # TODO: Mods de Est-3 en el Lab 2
+             # TODO: Mods de Est-3 en el Lab 2
+             print("Cargando información de Book-Tags...")
+             booktags = load_books_tags(app)
+             print("Total de Book-Tags cargados: " + str(booktags))
 
         elif int(inputs[0]) == 0:
             working = False
@@ -167,4 +161,4 @@ def main():
 
         else:
             print("Opcion erronea, vuelva a elegir.\n")
-    logic.exit(0)
+    sys.exit(0)
