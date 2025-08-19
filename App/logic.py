@@ -143,12 +143,13 @@ def load_books_tags(catalog, filename):
     return book_tag_size(catalog)
 
 
-def first_book(catalog):
-    """
-    Devuelve el primer libro del catalogo
-    """
-    # TODO: Mods Est-3 en el Lab 2
-    pass
+def first_book(app): 
+    """ 
+    Devuelve el primer libro del catalogo 
+    """ 
+    # TODO: Mods de Est-1 en el Lab 2 
+    first = logic.first_book(app) 
+    return first 
 
 
 def last_book(catalog):
@@ -180,42 +181,38 @@ def add_book_tags_file(catalog, booktagsfile):
     return catalog
 
 
-def create_book_tag_list(catalog):
-    """
-    Esta funcion crea una lista vacia para booktags.
-    """
-    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
+def create_book_tag_list(catalog): 
+    """ 
+    Esta función crea una lista vacía para booktags. 
+    """ 
+    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2 
+    catalog["book_tags"] = set.new_set() 
+    return catalog 
 
 
-def add_book_tag(catalog, booktag):
-    """
-    Esta funcion agrega un elemento a lista de booktags.
-
-    :param catalog: Catalogo de la aplicación
-    :type catalog: dict
-    :param booktag: Tag a agregar
-    :type booktag: dict
-
-    :returns: catalog
-    :rtype: dict
-    """
-    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
+def add_book_tag(catalog, booktag): 
+    """ 
+   
+ 
+pg. 15 
+ 
+    Esta función agrega un elemento a lista de booktags. 
+    """ 
+    # TODO: Mods de Est-1, Est-2 y Est-3 en Lab 2 
+    set.add_element(catalog["book_tags"], booktag) 
+    return catalog
 
 
 # Funciones de consulta
 
-def book_size(catalog):
-    # TODO: Mods de Est-3 en el Lab 2
-    pass
-
-
-def tag_size(catalog):
-    # TODO: Mods de Est-3 en el Lab 2
-    pass
-
-
-def book_tag_size(catalog):
-    # TODO: Mods de Est-3 en el Lab 2
-    pass
+def book_size(catalog): 
+    # TODO Mods de Est-3 en el Lab 2 
+    return set.size(catalog["books"]) 
+ 
+def tag_size(catalog): 
+    # TODO Mods de Est-3 en el Lab 2 
+    return set.size(catalog["tags"]) 
+ 
+def book_tag_size(catalog): 
+    # TODO Mods de Est-3 en el Lab 2 
+    return set.size(catalog["book_tags"]) 
