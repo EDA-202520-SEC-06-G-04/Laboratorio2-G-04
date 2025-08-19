@@ -26,7 +26,7 @@
  * Andres Rodriguez - Última version
  """
 
-import csv 
+import csv
 import os
 
 # Importar el modulo de la estructura de datos set
@@ -91,10 +91,7 @@ def load_books(catalog, filename):
     :returns: Tamaño del conjunto de libros
     :rtype: int
     """
-    books = catalog["books"]
-    books_file = os.path.join(data_dir, filename)
-    catalog["books"] = set.load_set(books, books_file)
-    return book_size(catalog)
+    pass
 
 
 def load_tags(catalog, filename):
@@ -125,19 +122,16 @@ def load_books_tags(catalog, filename):
     de tags. Siga el mismo procedimiento que en la carga de libros.
 
     :param catalog: Catalogo de la aplicación
-    :type catalog: dictmer
+    :type catalog: dict
     :param filename: Nombre del archivo csv con los tags de los libros
     :type filename: str
 
     :returns: Tamaño del conjunto de tags de los libros
     :rtype: int
     """
-    book_tags = catalog["book_tags"]
-    tags_file = os.path.join(data_dir, filename)
-    catalog["book_tags"] = set.load_set(book_tags, tags_file)
-    return len(catalog["book_tags"])
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    
+    pass
+
 
 def first_book(catalog):
     """
@@ -152,7 +146,8 @@ def last_book(catalog):
     Devuelve el ultimo libro del catalogo
     """
     # TODO: Mods Est-3 en el Lab 2
-    pass
+    last = last_book(catalog)
+    print("Último libro cargado:\n" + str(last) + "\n")
 
 # Funciones para la manipulacion de los datos
 
