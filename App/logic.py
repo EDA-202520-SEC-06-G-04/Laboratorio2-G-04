@@ -86,7 +86,7 @@ def load_books(catalog, filename):
     :param catalog: Catalogo de la aplicación
     :type catalog: dict
     :param filename: Nombre del archivo csv con los libros
-    :type filename: str
+    :type filename: strb
 
     :returns: Tamaño del conjunto de libros
     :rtype: int
