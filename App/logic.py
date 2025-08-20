@@ -86,15 +86,17 @@ def load_books(catalog, filename):
     :param catalog: Catalogo de la aplicación
     :type catalog: dict
     :param filename: Nombre del archivo csv con los libros
-    :type filename: str
+    :type filename: strb
 
     :returns: Tamaño del conjunto de libros
     :rtype: int
     """
-    books = catalog["books"]
-    books_file = os.path.join(data_dir, filename)
-    catalog["books"] = set.load_set(books, books_file)
-    return book_size(catalog)
+    tf = os.path.join(data_dir, filename)
+    input_file = csv.DictReader(open(tf, encoding="utf-8"))
+    catalog["model"] = create_book_tag_list(catalog["model"])
+    for booktag in input_file:
+        add_book_tag(catalog, booktag)
+    return book_tag_size(catalog)
 
 
 def load_tags(catalog, filename):
@@ -133,6 +135,7 @@ def load_books_tags(catalog, filename):
     :rtype: int
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
+<<<<<<< HEAD
     """
 Cargo los tags de los libros del archivo
 """
@@ -140,17 +143,32 @@ Cargo los tags de los libros del archivo
     booktagfile = os.path.join(data_dir, filename)
     input_file = csv.DictReader(open(booktagfile, encoding="utf-8"))
     catalog = create_book_tag_list(catalog)
+=======
+    tf = os.path.join(data_dir, filename)
+    input_file = csv.DictReader(open(tf, encoding="utf-8"))
+    catalog["model"] = create_book_tag_list(catalog["model"])
+>>>>>>> 0ef428de38ae4890b9b0dc643f2cab3347424754
     for booktag in input_file:
         add_book_tag(catalog, booktag)
     return book_tag_size(catalog)
 
 
+<<<<<<< HEAD
 def first_book(catalog):
     """
     Devuelve el primer libro del catalogo
     """
     # TODO: Mods Est-3 en el Lab 2
     return set.get_first_element(catalog["books"])
+=======
+def first_book(app): 
+    """ 
+    Devuelve el primer libro del catalogo 
+    """ 
+    # TODO: Mods de Est-1 en el Lab 2 
+    first = logic.first_book(app) 
+    return first 
+>>>>>>> 0ef428de38ae4890b9b0dc643f2cab3347424754
 
 
 def last_book(catalog):
@@ -158,7 +176,13 @@ def last_book(catalog):
     Devuelve el ultimo libro del catalogo
     """
     # TODO: Mods Est-3 en el Lab 2
+<<<<<<< HEAD
     return set.get_last_element(catalog["books"])
+=======
+    last = last_book(app)
+    print("Último libro cargado:\n" + str(last) + "\n")
+
+>>>>>>> 0ef428de38ae4890b9b0dc643f2cab3347424754
 # Funciones para la manipulacion de los datos
 
 
@@ -175,18 +199,25 @@ def add_book_tags_file(catalog, booktagsfile):
     :rtype: dict
     """
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
+<<<<<<< HEAD
     set.add_element(catalog["book_tags"], booktagsfile)
+=======
+    bt = set.load_set(set.new_set(), booktagsfile)
+    catalog["book_tags"] = bt
+>>>>>>> 0ef428de38ae4890b9b0dc643f2cab3347424754
     return catalog
 
 
-def create_book_tag_list(catalog):
-    """
-    Esta funcion crea una lista vacia para booktags.
-    """
-    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
+def create_book_tag_list(catalog): 
+    """ 
+    Esta función crea una lista vacía para booktags. 
+    """ 
+    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2 
+    catalog["book_tags"] = set.new_set() 
+    return catalog 
 
 
+<<<<<<< HEAD
 def add_book_tag(catalog, booktag):
     """
     Esta funcion agrega un elemento a lista de booktags.
@@ -202,10 +233,24 @@ def add_book_tag(catalog, booktag):
     # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
     set.add_element(catalog["book_tags"], booktag) 
     return catalog 
+=======
+def add_book_tag(catalog, booktag): 
+    """ 
+   
+ 
+pg. 15 
+ 
+    Esta función agrega un elemento a lista de booktags. 
+    """ 
+    # TODO: Mods de Est-1, Est-2 y Est-3 en Lab 2 
+    set.add_element(catalog["book_tags"], booktag) 
+    return catalog
+>>>>>>> 0ef428de38ae4890b9b0dc643f2cab3347424754
 
 
 # Funciones de consulta
 
+<<<<<<< HEAD
 def book_size(catalog):
     # TODO: Mods de Est-3 en el Lab 2
     return set.size(catalog["books"]) 
@@ -220,3 +265,16 @@ def book_tag_size(catalog):
     # TODO: Mods de Est-3 en el Lab 2
     return set.size(catalog["book_tags"]) 
     # cambio de prueba en Est-3
+=======
+def book_size(catalog): 
+    # TODO Mods de Est-3 en el Lab 2 
+    return set.size(catalog["books"]) 
+ 
+def tag_size(catalog): 
+    # TODO Mods de Est-3 en el Lab 2 
+    return set.size(catalog["tags"]) 
+ 
+def book_tag_size(catalog): 
+    # TODO Mods de Est-3 en el Lab 2 
+    return set.size(catalog["book_tags"]) 
+>>>>>>> 0ef428de38ae4890b9b0dc643f2cab3347424754

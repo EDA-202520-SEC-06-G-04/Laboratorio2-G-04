@@ -48,7 +48,7 @@ def new_logic():
     return control
 
 
-def print_menu():
+def print_menu(catalog):
     """
     Imprime el menú de opciones en consola para el usuario
     """
@@ -61,7 +61,7 @@ def print_menu():
     print("0- Salir")
 
 
-def load_books(app):
+def load_books(catalog):
     """
     Función que carga los libros en la aplicación. 
     Carga los libros desde el archivo books-small.csv y los almacena en la aplicación
@@ -69,8 +69,7 @@ def load_books(app):
     :param app: Aplicación de la lógica
     :type app: logic
     """
-    books = logic.load_books(app,
-                             "GoodReads/books-small.csv")
+    books = logic.load_books(app,"GoodReads/books.csv")
     return books
 
 
@@ -87,24 +86,26 @@ def load_tags(app):
     return tags
 
 
-def load_books_tags(app):
-    """
-    Función que carga los tags de los libros en la aplicación.
-    Carga los tags de los libros desde el archivo book_tags-small.csv y los almacena en la aplicación
+def load_books_tags(app): 
+    """ 
+    Función que carga los tags de los libros en la aplicación. 
+    Carga los tags de los libros desde el archivo book_tags-small.csv y los 
+    almacena en la aplicación 
+    :param app: Aplicación de la lógica 
+    :type app: logic 
+     """  
+    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2 
+    book_tags = logic.load_books_tags(app, 
+    "GoodReads/book_tags.csv") 
 
-    :param app: Aplicación de la lógica
-    :type app: logic
-    """
-    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
 
-
-def first_book(app):
-    """
-    Devuelve el primer libro cargado en el conjunto de libros
-    """
-    # TODO: Mods de Est-1, Est-2 y Est-3 en el Lab 2
-    pass
+def first_book(app): 
+    """ 
+    Devuelve el primer libro del catalogo 
+    """ 
+    # TODO: Mods de Est-1 en el Lab 2 
+    first = logic.first_book(app) 
+    return first 
 
 
 def last_book(app):
@@ -112,7 +113,8 @@ def last_book(app):
     """
     Devuelve el último libro cargado en el conjunto de libros
     """
-    pass
+    last = logic.last_book(app)
+    return last
 
 
 # Se crea el controlador asociado a la vista
@@ -141,7 +143,8 @@ def main():
             first = None
 
             # TODO: Mods de Est-2 en el Lab 2
-            last = None
+            last = last_book(app)
+            print("Último libro cargado:\n" + str(last) + "\n")
 
         elif int(inputs[0]) == 2:
             print("Cargando información de tags....")
